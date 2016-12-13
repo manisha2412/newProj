@@ -1,0 +1,40 @@
+
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link ref="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<nav class="navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+
+            </button>
+            <a class="navbar-brand" href= "{% url 'music:index'%}">manii </a>
+
+         </div>
+        <div class="navbar-collapse">
+
+
+        </div>
+    </div>
+
+</nav>
+{% if all_albums %}
+<h3>here are all my Albums</h3>
+    <ul>
+        {% for album in all_albums %}
+        <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
+        {% endfor %}
+    </ul>
+ {% else %}
+    <h1>you don't have any album</h1>
+{%endif%}
